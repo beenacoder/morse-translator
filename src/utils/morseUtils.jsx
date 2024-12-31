@@ -18,7 +18,13 @@ const morseCode = {
     return text.toUpperCase().split('').map(char => morseCode[char] || '').join(' ');
   };
   
+  // export const convertToText = (morse) => {
+  //   return morse.split(' ').map(code => reverseMorseCode[code] || '').join('');
+  // };
   export const convertToText = (morse) => {
-    return morse.split(' ').map(code => reverseMorseCode[code] || '').join('');
+    return morse
+      .trim() // Elimina espacios adicionales al principio o al final.
+      .split(' ') // Divide el código Morse en palabras.
+      .map(code => reverseMorseCode[code] || '') // Si el código no está definido, usa una cadena vacía.
+      .join('');
   };
-  
